@@ -238,7 +238,14 @@ app_license = "mit"
 # Automatically update python controller files with type annotations for this app.
 # export_python_type_annotations = True
 
-# default_log_clearing_doctypes = {
+# default_log_clearing_
+# doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# apps/cht/cht/hooks.py
+
+website_route_rules = [
+    {"from_route": "/frontend/<path:app_path>", "to_route": "frontend"},
+    {"from_route": "/frontend", "to_route": "frontend"},
+]
