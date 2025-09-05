@@ -244,8 +244,7 @@ app_license = "mit"
 # }
 
 # apps/cht/cht/hooks.py
-
 website_route_rules = [
-    {"from_route": "/frontend/<path:app_path>", "to_route": "frontend"},
-    {"from_route": "/frontend", "to_route": "frontend"},
+{"from_route": "/cht/<path:app_path>", "to_route": "cht"},
+{"from_route": "/cht", "to_route": "cht"},
 ]

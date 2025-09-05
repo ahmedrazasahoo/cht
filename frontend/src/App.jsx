@@ -7,31 +7,34 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import ACDSamplePage from './pages/ACDSamplePage';
 import DatabaseSetupPage from './pages/DatabaseSetupPage';
-import { FrappeProvider } from 'frappe-react-sdk'
+import { FrappeProvider } from 'frappe-react-sdk';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <div className="App">
-          <FrappeProvider>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/acd-sample" element={<ACDSamplePage />} />
-            <Route path="/database-setup" element={<DatabaseSetupPage />} />
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <DashboardPage />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </FrappeProvider>
-        </div>
-      </Router>
-    </AuthProvider>
+    <FrappeProvider
+      url={import.meta.env.VITE_FRAPPE_URL ?? window.location.origin}
+      tokenParams={{ useTokenCookie: true }}
+    >
+      <AuthProvider>
+        <Router>
+          <div className="App">
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/acd-sample" element={<ACDSamplePage />} />
+              <Route path="/database-setup" element={<DatabaseSetupPage />} />
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <DashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </div>
+        </Router>
+      </AuthProvider>
+    </FrappeProvider>
   );
 }
 
